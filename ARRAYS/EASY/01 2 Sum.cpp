@@ -1,7 +1,5 @@
 #include <vector>
-#include <string>
 using namespace std;
-
 
 /** BRUTE : checking all the pairs
 Time Complexity: O(N2), where N = size of the array.
