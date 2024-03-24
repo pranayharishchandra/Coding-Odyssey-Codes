@@ -2,10 +2,9 @@
 #include <vector>
 using namespace std;
 /* 1D DP to solve 
-Time Complexity: O(N3) approx., where N = size of the array.
-Reason: We are using three nested loops, each running approximately N times.
+Time Complexity: O(N) approx., where N = size of the array.
 
-Space Complexity: O(1) as we are not using any extra space.
+Space Complexity: O(N).
  */
 
 class Solution {
