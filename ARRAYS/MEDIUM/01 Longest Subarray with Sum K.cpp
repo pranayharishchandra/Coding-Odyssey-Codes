@@ -191,7 +191,9 @@ int getLongestSubarray(vector<int>& arr, int k){
 
 
 /**Similar question : Count Subarray sum Equals K
+Time Complexity: O(N)
 
+Space Complexity: O(1) as we are not using any extra space.
  */
 #include <map>
 int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
@@ -199,19 +201,20 @@ int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
     map<int, int> mpp;
     int preSum = 0, cnt = 0;
 
-    mpp[0] = 1; // Setting 0 in the map.
+    mpp[0] = 1; // Empty subarray means sum zero
+    
     for (int i = 0; i < n; i++) {
-        // add current element to prefix Sum:
+
         preSum += arr[i];
 
-        // Calculate x-k:
+        // x - k = preSum
         int remove = preSum - k;
 
-        // Add the number of subarrays to be removed:
+        // Number of ways to make x,
+        // is number of ways to make k
         cnt += mpp[remove];
 
-        // Update the count of prefix sum
-        // in the map.
+        // Update the count of prefix sum, in the map
         mpp[preSum] += 1;
     }
     return cnt;
