@@ -3,18 +3,16 @@
 using namespace std;
 /** Brute Force Approach: Using Array(Three Nested Loop). 
 
-    Time Complexity : O(N^3), The outer loop runs exactly N times, and because currentNumber increments by 1
-    during each iteration of the while loop, it runs in O(N) time. Then, on each iteration of the while loop, an
-    O(N) operation in the array is performed. Therefore, this brute force algorithm is really three nested O(N)
-    loops, which compound multiplicatively to a cubic runtime. Where N is the size of the Array(nums).
+Time Complexity: O(N3), N = size of the given array.
 
-    Space Complexity : O(1), Constant space.
+Space Complexity: O(1), as we are not using any extra space to solve this problem.
 
     Note : This will give TLE.
 */
 class Solution {
 private: 
     // searching if element present or not
+    // O(n)
     bool longestConsecutive(vector<int>& nums, int target){
         int n = nums.size();
 
@@ -30,12 +28,16 @@ public:
         int n = nums.size();
         int longestConsecutiveSequence = 0;
 
+        // O(n)
         for(auto num : nums){
             int currentNumber = num;
             int currentConsecutiveSequence = 1;
 
-            while(longestConsecutive(nums, currentNumber+1)){
-                currentNumber += 1;
+            // O(n x n)
+            // O((can be total n consecutive numbers so while loop will run n times) x
+            //  (for searching each number it will take take TC: O(n)))
+            while(longestConsecutive(nums, currentNumber+1)){ // O(n)
+                currentNumber += 1; // O(1)
                 currentConsecutiveSequence += 1;
             }
             longestConsecutiveSequence = max(longestConsecutiveSequence, currentConsecutiveSequence);
@@ -76,14 +78,13 @@ public:
         //find longest sequence:
         for (int i = 0; i < n; i++) {
 
-            if (a[i] == lastSmaller + 1) {
+            if (a[i] == lastSmaller + 1) 
                 cnt += 1;
-                lastSmaller = a[i];
-            }
-            else if (a[i] != lastSmaller) {
+            
+            else 
                 cnt = 1;
-                lastSmaller = a[i];
-            }
+            
+            lastSmaller = a[i];
             longest = max(longest, cnt);
         }
         return longest;
@@ -97,11 +98,16 @@ public:
 
 /*Optimise Approach.(Solved using Array + Hash Table(Unordered set).)
 
-    Time Complexity : O(N), Although the time complexity appears to be quadratic due to the while loop nested
-    within the for loop, closer inspection reveals it to be linear. Because the while loop is reached only when
-    marks the beginning of a sequence (i.e. currentNumber-1 is not present in nums), the while loop can only run
-    for N iterations throughout the entire runtime of the algorithm. This means that despite looking like O(N^2)
-    complexity, the nested loops actually run in O(N+N)=O(N) time. All other computations occur in constant
+    Time Complexity : O(N) + O(2*N) ~ O(3*N),
+    Although the time complexity appears to be quadratic due to the while loop nested
+    within the for loop, closer inspection reveals it to be linear.
+    Because the while loop is reached only when
+    marks the beginning of a sequence (i.e. currentNumber-1 is not present in nums), 
+    the while loop can only run
+    for N iterations throughout the entire runtime of the algorithm. 
+    This means that despite looking like O(N^2)
+    complexity, the nested loops actually run in O(N+N)=O(N) time. 
+    All other computations occur in constant
     time, so the overall runtime is linear. Where N is the size of the Array(nums).
 
     Space Complexity : O(N), Unordered set space.

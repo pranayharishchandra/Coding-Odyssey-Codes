@@ -1,8 +1,16 @@
+// Kadane’s Algorithm : Maximum Subarray Sum in an Array
+// https://leetcode.com/problems/maximum-subarray/description/
 #include <vector>
 #include <iostream>
 
 using namespace std;
 
+/** For brute and better refer :: 01 Longest Subarray with Sum K */
+
+/**Optimal : Kandanes Algorithm
+TC: O(n)
+SC: O(1)
+*/
 class Solution {
 public:
     int maxSubArray(vector<int>& arr) {

@@ -5,6 +5,7 @@ using namespace std;
 
 class Solution {
 public:
+    // TC: O(n) single traversal, SC:O(n) for newArray
     vector<int> rearrangeArray(vector<int>& nums) {
         int positiveIndex = 0;
         int negativeIndex = 1;
