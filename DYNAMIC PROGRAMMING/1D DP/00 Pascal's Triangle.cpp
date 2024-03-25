@@ -16,9 +16,10 @@ public:
         for (int i = 0; i < numRows; i++) {
             vector<int> currentRow(i + 1, 1);
             
-            for (int j = 1; j < i; j++) {
+            // starting and ending part of array always have 1,
+            // so not going over 0th and ith itdx
+            for (int j = 1; j < i; j++) 
                 currentRow[j] = prevRow[j - 1] + prevRow[j];
-            }
             
             result.push_back(currentRow);
             prevRow = currentRow;
