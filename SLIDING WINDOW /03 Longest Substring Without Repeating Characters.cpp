@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/**APPROAH
+-> sliding window and hashmap
+-> see 01 problem of this (SLIDING WINDOW) folder, it's alnost same patter quesiion
+*/
 int lengthOfLongestSubstring(string s) {
     unordered_set<char> charSet;
     int maxLength = 0;
