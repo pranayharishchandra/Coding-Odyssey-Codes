@@ -10,7 +10,7 @@ public:
         
         // long n_temp = (n<0)?  n * (-1): n ; 
         // above will give me error because -INT_MIN can't be handeled by (int)
-        
+
         long n_temp = (n<0)? (long) n * (-1): n ;
 
         while (n_temp > 0) 
@@ -30,3 +30,4 @@ public:
         return ans;
     }
 };
+
