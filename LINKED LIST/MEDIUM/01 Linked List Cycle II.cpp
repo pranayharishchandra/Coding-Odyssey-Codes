@@ -35,6 +35,7 @@ public:
 
 };
 
+
 // MEDIUM - TELL THE INDEX THEY MEET
 // https://leetcode.com/problems/linked-list-cycle-ii/
 class Solution {
@@ -50,7 +51,7 @@ class Solution {
 
       slow = slow->next;
       fast = fast->next->next;
-      
+
       if (slow == fast) {
         // If the pointers meet, there is a cycle in the linked list.
         // Reset the slow pointer to the head of the linked list, and move both pointers one step at a time
