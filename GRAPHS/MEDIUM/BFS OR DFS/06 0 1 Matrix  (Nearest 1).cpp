@@ -20,6 +20,7 @@ public:
         vector<vector<int>> distances(matrix.size(), vector<int>(matrix[0].size(), INT_MAX));
         queue<pair<int,int>> q;
 
+        // O(N X M)
         // Finding cells with value 0 and updating their distances to 0
         for (int i = 0; i < matrix.size(); ++i) {
             for (int j = 0; j < matrix[0].size(); ++j) {
@@ -33,6 +34,8 @@ public:
         // Possible directions to explore: right, down, up, left
         vector<pair<int,int>> directions{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
 
+
+        // O(N X M X 4) - every cell 4 nbrs
         while (!q.empty()) {
             // Taking the top-most element in the queue
             int x = q.front().first;
