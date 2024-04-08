@@ -2,7 +2,8 @@
   "files.associations": {
     "vector": "cpp",
     "unordered_set": "cpp",
-    "queue": "cpp"
+    "queue": "cpp",
+    "iosfwd": "cpp"
   },
   "C_Cpp.errorSquiggles": "enabledIfIncludesResolve"
 }
