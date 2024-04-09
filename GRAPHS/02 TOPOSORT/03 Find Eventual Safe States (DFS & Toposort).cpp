@@ -7,6 +7,71 @@
 #include <algorithm>
 using namespace std;
 
+/* using BFS | Kahn's Algo | using TOPOSORT 
+
+        APPROACH
+the node with outdegree 0 is the terminal node and the nodes 
+part of the cycle i.e. with indegree not 0 OR outdegree not 0
+are not safe nodes
+
+-> now since the nodes with outdegree 0 are safe nodes
+> we can reverse the graph so 
+> outdegree becomes indegree 
+> hence we can now use TOPOSORT
+*/
+class Solution {
+public:
+    vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
+        int V = graph.size();
+        
+        // Create a "REVERSE" adjacency list to represent incoming edges
+        vector<vector<int>> adjRev(V);
+        vector<int> indegree(V, 0);
+        
+
+        // originally: i -> j
+        // reverse   : i <- j
+        for (int i = 0; i < V; ++i) {
+            for (int j : graph[i]) {
+                adjRev[j].push_back(i);
+                indegree[i]++;
+            }
+        }
+        
+        // Perform topological sorting using BFS
+        queue<int> q;
+        vector<int> safeNodes;
+        for (int i = 0; i < V; ++i) 
+            if (indegree[i] == 0) 
+                q.push(i); // Enqueue nodes with indegree 0
+
+
+        while (!q.empty()) {
+
+            int node = q.front();
+            q.pop();
+            // safeNodes.push_back(node); 
+
+            for (int neighbor : adjRev[node]) 
+                if (--indegree[neighbor] == 0) 
+                    q.push(neighbor); 
+
+        }
+
+        // sort(safeNodes.begin(), safeNodes.end());
+
+        for (int i = 0; i < V; i++)
+            if (indegree[i] == 0)
+                safeNodes.push_back(i);
+        
+        return safeNodes;
+    }
+};
+
+
+
+
+
 /* using DFS - my 3rd sem or 1 old solution
     JUST SLIGHT CHANGE IN CHECH IF CYCLE CODE
 */
@@ -62,54 +127,3 @@ public:
         return ans; 
     }
 };
-
-
-
-
-
-/* using BFS */
-class Solution {
-public:
-    vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
-        int V = graph.size(); // Number of nodes
-        
-        // Create a reverse adjacency list to represent incoming edges
-        vector<vector<int>> adjRev(V);
-        vector<int> indegree(V, 0);
-        
-        // Calculate indegrees for each node and create reverse adjacency list
-        for (int i = 0; i < V; ++i) {
-            for (int j : graph[i]) {
-                adjRev[j].push_back(i);
-                indegree[i]++;
-            }
-        }
-        
-        // Perform topological sorting using BFS
-        queue<int> q;
-        vector<int> safeNodes;
-        for (int i = 0; i < V; ++i) {
-            if (indegree[i] == 0) {
-                q.push(i); // Enqueue nodes with indegree 0
-            }
-        }
-
-        while (!q.empty()) {
-            int node = q.front();
-            q.pop();
-            safeNodes.push_back(node); // Add the current node to the list of safe nodes
-            for (int neighbor : adjRev[node]) {
-                indegree[neighbor]--; // Decrement the indegree of adjacent nodes
-                if (indegree[neighbor] == 0) {
-                    q.push(neighbor); // Enqueue adjacent nodes with updated indegree 0
-                }
-            }
-        }
-
-        // Sort the list of safe nodes
-        sort(safeNodes.begin(), safeNodes.end());
-
-        return safeNodes;
-    }
-};
-

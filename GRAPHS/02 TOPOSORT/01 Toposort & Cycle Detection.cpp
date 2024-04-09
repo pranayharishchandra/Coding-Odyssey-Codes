@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/topological-sort/1
+
 // https://takeuforward.org/data-structure/topological-sort-algorithm-dfs-g-21/
 
 /* TOPOSORT 
@@ -61,11 +63,9 @@ public:
 
 /* BFS | Kahn's Algorithm | Topological Sort Algorithm 
 
-Time Complexity: O(V+E)+O(V), where V = no. of nodes and E = no. of edges. 
-There can be at most V components. So, another O(V) time complexity.
+Time Complexity: O(V+E), where V = no. of nodes and E = no. of edges. This is a simple BFS algorithm.
 
-Space Complexity: O(2N) + O(N) ~ O(2N): O(2N) for the visited array and the 
-stack carried during DFS calls and O(N) for recursive stack space, where N = no. of nodes.
+Space Complexity: O(N) + O(N) ~ O(2N), O(N) for the indegree array, and O(N) for the queue data structure used in BFS(where N = no.of nodes).
 */
 
 #include <vector>
@@ -107,3 +107,10 @@ public:
         return topo;
     }
 };
+
+/* CYCLE DETECTION: (modify Kahn's algo or BFS code)
+
+    return topo.size() < V; // cycle detected
+
+    CYCLE DETECTION: TOPOSORT DFS code can't me modified to determine if graph has cycle
+*/
