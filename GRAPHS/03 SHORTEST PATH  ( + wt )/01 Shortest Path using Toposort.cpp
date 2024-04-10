@@ -8,6 +8,10 @@ using namespace std;
 
 /* APPROACH
 element on the top will be the node which is not dependent on anyone
+
+Time Complexity: 
+BFS + (Finding distance from the src -- using toposort)
+O(E + V) + O(V) ~ O(E + V), which is BETTER than DIJKSTRA's Algo (E log V)
 */
 class Solution {
 private:

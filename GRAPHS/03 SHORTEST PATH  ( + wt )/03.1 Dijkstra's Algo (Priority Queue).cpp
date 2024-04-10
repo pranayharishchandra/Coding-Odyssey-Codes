@@ -6,16 +6,21 @@
 // #include <priority_queue> // #include <queue>
 using namespace std;
 
-/* NOTE: Dijkstra can be implemented only for + edge weights
-in case of negative weights
-it will fall in an INFINITE LOOP
+/* 
+* NOTE: Dijkstra can be implemented only for + edge weights
+* in case of negative weights
+* it will fall in an INFINITE LOOP
 
 simple intutuion - we have to "GIVE" something to go somewhere
 if I "GET" something for going somewhere then I will keep on going
 */
 
 
-
+/**
+ * Dijkstra's algorithm works for both directed and undirected graphs. 
+ * The same code can be used for both types of graphs without any modification. 
+ * The only difference lies in how you construct the adjacency list.
+*/
 
 
 
