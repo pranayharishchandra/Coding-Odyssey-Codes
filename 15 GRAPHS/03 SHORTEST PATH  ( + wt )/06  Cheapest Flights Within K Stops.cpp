@@ -1,5 +1,32 @@
 // https://leetcode.com/problems/cheapest-flights-within-k-stops/description/
 
+/* 
+*CONSTRAINATS OF THIS QUESTION:
+* YOU CAN USE "int" for distance in this question
+ 1 <= n <= 100
+ 0 <= flights.length <= (n * (n - 1) / 2)
+ flights[i].length == 3
+ 0 <= fromi, toi < n
+ fromi != toi
+* 1 <= pricei <= 104
+ There will not be any multiple flights between two cities.
+ 0 <= src, dst, k < n
+ src != dst
+
+
+* CONSTRAINTS OF NEXT QUESTION:
+* YOU CAN'T USE "int" and you should use "long long" to calculate distance
+
+ 1 <= n <= 200
+ n - 1 <= roads.length <= n * (n - 1) / 2
+ roads[i].length == 3
+ 0 <= ui, vi <= n - 1
+*1 <= timei <= 109
+*ui != vi
+There is at most one road connecting any two intersections.
+You can reach any intersection from any other intersection.
+*/
+
 #include <vector>
 #include <set>
 #include <queue> 
