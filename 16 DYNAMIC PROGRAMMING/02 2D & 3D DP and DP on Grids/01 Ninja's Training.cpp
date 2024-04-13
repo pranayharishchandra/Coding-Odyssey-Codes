@@ -8,7 +8,7 @@
 * Sub-Answers: for each index or day, there are 3 activities, hence 3 sub-answers for every day are possible... but we will choose maxium of the 3 sub-answers and the maxium will be our answer for that Nth day
 
 
-* 2D dp because your sub-answers depend on "day" as well as "last" activity you performed
+* 2D dp because: "2 changing parameters on which your sub-answer depends" that are -> "day" as well as "last" activity you performed
 */
 
 
