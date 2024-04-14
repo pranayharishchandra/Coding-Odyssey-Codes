@@ -69,7 +69,8 @@
     "concepts": "cpp",
     "memory": "cpp",
     "type_traits": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "numeric": "cpp"
   },
   "C_Cpp.errorSquiggles": "enabledIfIncludesResolve"
 }

@@ -6,7 +6,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 public:
-    int isPrime(int n){
+    bool isPrime(int n) {
         if (n <= 1) {
             return false; // 0 and 1 are not prime
         }
@@ -17,8 +17,8 @@ public:
             return false; // Numbers divisible by 2 or 3 are not prime
         }
         // Check divisibility by numbers of the form 6k +/- 1 up to sqrt(n)
-       for (int i = 6; i * i <= n; i += 6) {
-            if (n % (i-1) == 0 || n % (i+1) == 0) {
+        for (int i = 5; i <= sqrt(n); i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
                 return false;
             }
         }
