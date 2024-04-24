@@ -1,4 +1,6 @@
 #include <vector>
+#include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 /** BRUTE : checking all the pairs
