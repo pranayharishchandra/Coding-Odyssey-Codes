@@ -46,7 +46,7 @@ int f(int i, int j1, int j2, int n, int m,
 
     // out of bound -- to handle stupid funciton call
     if (j1>m || j2>m || j1<0 || j2<0)
-        return -1e9;
+        return -1e9; //* can't we write it 0, as min ways 0 also means not possible
      
     // base cases
     if (i==n-1) 
@@ -129,8 +129,10 @@ int maximumChocolates(int r, int c, vector<vector<int>> &grid) {
 }
 
 
-/*============================================================================================================
-    SOLUTION - 3.1: MEMOIZATION - solution 2 memo
+/*
+============================================================================================================
+    * SOLUTION - 3.1: MEMOIZATION - solution 2 memo
+    * vector<vector<vector<int>>> dp (n, vector<vector<int>> (m, vector<int> (m, -1)));
 ============================================================================================================*/
 
 // memoization solution
