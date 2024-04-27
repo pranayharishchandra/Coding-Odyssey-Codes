@@ -1,11 +1,16 @@
 // https://leetcode.com/problems/minimum-falling-path-sum-ii/description/?envType=daily-question&envId=2024-04-26
 
+/*
+ * Given an n x n integer matrix grid, return the minimum sum of a falling path with non-zero shifts.
+
+ * A falling path with non-zero shifts is a choice of exactly one element from each row of grid such that no two elements chosen in adjacent rows are in the same column.
+ */
 #include <vector>
 #include <cmath>
 using namespace std;
 
-// SOLUTION - 1, SOLUTION IS HANDELING BASE CASE BETTER IN MY OPENION
-// WE CAN DIRECTLY USE SOLUTION 2 FOR TABULATION
+//* SOLUTION - 1, SOLUTION IS HANDELING BASE CASE BETTER IN MY OPENION
+//* WE CAN DIRECTLY USE SOLUTION 2 FOR TABULATION
 class Solution {
 public:
     int dp[201][201];
@@ -43,7 +48,7 @@ public:
     }
 };
 
-/** MEMOIZATION : SOLUTION 2 -- JUST CALLING BASECASE IN A DIFFERENT WAY*/
+//* MEMOIZATION : SOLUTION 2 -- JUST CALLING BASECASE IN A DIFFERENT WAY
 class Solution {
 public:
     int dp[201][201];
