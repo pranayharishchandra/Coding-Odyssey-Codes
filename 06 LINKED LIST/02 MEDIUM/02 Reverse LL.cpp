@@ -1,9 +1,10 @@
+// https://leetcode.com/problems/reverse-linked-list/description/
 #include <vector>
 #include <iostream>
 #include <stack>
 using namespace std;
 
-// brute - useing stack -- as already solved in "01"
+// brute - useing stack
 
 class ListNode {
 public:
