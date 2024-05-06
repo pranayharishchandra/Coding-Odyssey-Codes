@@ -5,6 +5,7 @@
 #include <stack>
 using namespace std;
 
+//* struct NODE
 struct ListNode {
     int val;
     ListNode *next;
@@ -29,27 +30,32 @@ public:
     ListNode* removeNodes(ListNode* head) {
         // Initialize a stack to store nodes in non-decreasing order of their values
         stack<ListNode*> stack;
+
+        //* STACK WILL BE STORING THE NUMBERS IN DECREASING ORDER, 
+        //* since right has to be smaller than left in final LL
         
         // Traverse the linked list
         ListNode* cur = head;
         while (cur != nullptr) {
-            // Remove nodes from the stack whose values are less than the current node's value
+            //* Remove nodes from the stack whose values are 
+            //* less than the current node's value
+            //* "since: storing in stack in desc order (top - small, bottom - large)"
             while (!stack.empty() && stack.top()->val < cur->val) {
                 stack.pop();
             }
-              // Push the current node onto the stack
+            // Push the current node onto the stack
             stack.push(cur);
-              // Move to the next node
+            // Move to the next node
             cur = cur->next;
         }
         
-                                  // Reconstruct the linked list in reverse order using nodes from the stack
-        ListNode* nxt = nullptr;  // Pointer to the next node in the reversed list
+                                   //* Reconstruct the linked list in "reverse order" using nodes from the stack
+        ListNode* prev = nullptr;  // Pointer to the next node in the reversed list
         while (!stack.empty()) {
             cur       = stack.top();  // Get the top node from the stack
             stack.pop();              // Pop the top node from the stack
-            cur->next = nxt;          // Set the next pointer of the current node to the next node in the reversed list
-            nxt       = cur;          // Update the pointer to the next node in the reversed list
+            cur->next = prev;         // Set the next pointer of the current node to the next node in the reversed list
+            prev      = cur;          // Update the pointer to the next node in the reversed list
         }
         
         return cur;  // Return the head of the reversed list
