@@ -8,7 +8,7 @@ using namespace std;
 void Trick () {
     vector<pair<string, int>> v = {{"apple", 3}, {"banana", 1}, {"orange", 5}};
 
-    // Sorting in descending order based on the second element of the pair
+    //* Sorting in descending order based on the second element of the pair
     sort(v.begin(), v.end(), [&](const pair<string, int>& a, const pair<string, int>& b) {
         return a.second > b.second; 
     });
@@ -32,21 +32,25 @@ public:
             rank[i] = i;
 
         // Sort rank in descending order based on nums values
+        //* it's like sorting pair of (nums[i], rank[i]) in descending order
         sort(rank.begin(), rank.end(), [&](int a, int b) { return nums[a] > nums[b]; });
              
-        vector<string> ranks(nums.size());
+        vector<string> ans(nums.size());
 
-        // Assign ranks
-        for (int i = 3; i < nums.size(); ++i) {
-            ranks[rank[i]] = to_string(i + 1);
+        for (int i = 0; i < nums.size(); i++)
+        {
+            int originalIndex = rank[i]; // Get the original index from the sorted rank vector
+            int ranking = i + 1; // Get the ranking of the current student
+            
+            if      (ranking == 1) ans[originalIndex] = "Gold Medal";
+            else if (ranking == 2) ans[originalIndex] = "Silver Medal";
+            else if (ranking == 3) ans[originalIndex] = "Bronze Medal";
+            else                   ans[originalIndex] = to_string(ranking);
+
+            cout << ranking << " ";
         }
 
-        // Assign medals
-        if (!nums.empty()) ranks[rank[0]] = "Gold Medal";
-        if (nums.size() > 1) ranks[rank[1]] = "Silver Medal";
-        if (nums.size() > 2) ranks[rank[2]] = "Bronze Medal";
-
-        return ranks;
+        return ans;
     }
 };
 
