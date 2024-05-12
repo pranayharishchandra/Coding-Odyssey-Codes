@@ -4,8 +4,6 @@
 #include <stack>
 using namespace std;
 
-// brute - useing stack
-
 class ListNode {
 public:
     int data;   
@@ -21,6 +19,9 @@ public:
         next = nullptr;
     }
 };
+
+
+// BRUTE 1: USING STACK - store all elements in the stack
 
 // OPTIMAL 1: ITERATIVE, BY REVERSING (prev, curr nodes)
 ListNode* reverseList(ListNode *head) {
@@ -40,12 +41,21 @@ ListNode* reverseList(ListNode *head) {
 // OPTIMAL 2: RECURSIVE 
 ListNode* reverseList(ListNode* head) {
 
+    // if you have only 1 node, you can't reverse it and
+    // then it itself if ur answer
     if (head == NULL || head->next == NULL) 
         return head;
     
-    
-    ListNode* newHead = reverseList(head->next);
+    // head of the reversed LL, head of a LL always should  
+    // be returned in any recursive LL question
+    ListNode* newHead = reverseList(head->next); 
+
+    // front has now become the 
+    //* front of reversed LL
     ListNode* front   = head->next;
+
+    // add current node (head) to the end of the reversed LL
+    // i.e. after the front (end of reversed LL)
     front->next   = head;
     head->next    = NULL;
     

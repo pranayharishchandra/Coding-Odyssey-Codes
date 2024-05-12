@@ -9,7 +9,7 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-// BRUTE : O(2n)
+// BRUTE : O(2n) = O(n) + O(n - skip)
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
@@ -56,6 +56,8 @@ public:
         ListNode* first = dummy;
         ListNode* second = dummy;
 
+        // skip (n+1) steps - as you have to stand 
+        // before the node that you want to delete
         for (int i = 0; i <= n; ++i) {
             // if length of linked list is less than n value, 
             // don't remove anything
