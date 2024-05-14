@@ -19,12 +19,15 @@ public:
 
         auto slow = head;
         // to make sure the slow pointer is 1 
-        auto fast = head->next->next;
+        auto fast = head;
 
-        while (fast != NULL && fast->next != NULL) {
+        //    (odd: 3rd last node)      && (even: 2nd last node)
+        while (fast->next->next != NULL && fast->next->next->next != NULL) {
             fast = fast->next->next;
             slow = slow->next;
         }
+
+        // skip the next node
         slow->next = slow->next->next;
         return head;
     }
