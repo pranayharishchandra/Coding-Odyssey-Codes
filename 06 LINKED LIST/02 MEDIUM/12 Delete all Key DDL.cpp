@@ -79,7 +79,8 @@ public:
     }
 };
 
-// solution 1 - correct implementation of solution 2
+//* solution 3 - correct implementation of solution 2
+//* Solution 3 - delete the curr node and move to next
 // using current and NextNode (NextNode for better code readability & deletion of current)
 class Solution {
 public:
@@ -105,3 +106,32 @@ public:
         }
     }
 };
+
+//* Solution 4 - delete the next node node
+class Solution {
+public:
+    void deleteAllOccurOfX(struct Node** head_ref, int x) {
+        Node* current = *head_ref;
+
+        while (current != NULL) {
+            Node* nextNode = current->next; // Better readability
+            // Check if the next node exists and its value matches x, delete it
+            if (nextNode != NULL && nextNode->data == x) {
+                current->next = nextNode->next;
+                if (current->next) current->next->prev = current;
+                delete nextNode;
+            } else {
+                current = nextNode;
+            }
+        }
+
+        // Handle the case when the first node is to be deleted
+        while (*head_ref != NULL && (*head_ref)->data == x) {
+            Node* deleteNode = *head_ref;
+            *head_ref = (*head_ref)->next;
+            if (*head_ref) (*head_ref)->prev = NULL;
+            delete deleteNode;
+        }
+    }
+};
+
