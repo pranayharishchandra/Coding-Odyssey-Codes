@@ -1,4 +1,6 @@
 // https://leetcode.com/problems/trapping-rain-water/solutions/5270570/3-approaches/
+
+// Optimal 
 #include <vector>
 using namespace std;
 
