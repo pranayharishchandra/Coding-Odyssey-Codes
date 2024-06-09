@@ -1,5 +1,32 @@
 // https://leetcode.com/problems/trapping-rain-water/solutions/5270570/3-approaches/
 
+class Solution {
+public:
+    int trap(vector<int>& arr) {
+        int n = arr.size();
+        int waterTrapped = 0;
+
+        // Loop through each element in the array
+        for (int i = 0; i < n; i++) {
+            int leftMax = 0, rightMax = 0;
+
+            // Find the maximum height to the left of the current element
+            for (int j = i; j >= 0; j--) {
+                leftMax = max(leftMax, arr[j]);
+            }
+
+            // Find the maximum height to the right of the current element
+            for (int j = i; j < n; j++) {
+                rightMax = max(rightMax, arr[j]);
+            }
+
+            // Calculate the water trapped at the current element
+            waterTrapped += min(leftMax, rightMax) - arr[i];
+        }
+
+        return waterTrapped;
+    }
+};
 // Optimal 
 #include <vector>
 using namespace std;
