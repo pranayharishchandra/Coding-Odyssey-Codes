@@ -1,3 +1,19 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct TreeNode {
+  int data;
+  TreeNode * left;
+  TreeNode * right;
+
+  TreeNode (int data) {
+    this -> data = data;
+    left = NULL;
+    right = NULL;
+  }
+};
+
 class Solution {
 private:
     int search(vector<int> & arr, int key) {
