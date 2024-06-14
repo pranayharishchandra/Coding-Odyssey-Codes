@@ -18,6 +18,7 @@ class Solution
         if(m1.end < m2.end) return true;
         else if(m1.end > m2.end) return false;
         else if(m1.pos < m2.pos) return true;
+        else if(m1.start > m2.start) return false; // return true or false, doesn't matter
         return false;
     }
     
