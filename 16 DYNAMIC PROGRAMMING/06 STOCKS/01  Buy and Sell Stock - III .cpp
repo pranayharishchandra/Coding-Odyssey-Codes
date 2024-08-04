@@ -21,6 +21,7 @@ int getAns(vector<int>& Arr, int n, int ind, int buy, int cap, vector<vector<vec
                     // from the total profit current amt (of buying the stock) should be removed
     }
 
+    // you can sell it only 2 time at most
     if (buy == 1) { // We can sell the stock
         profit = max(0 + getAns(Arr, n, ind + 1, 1, cap, dp),
                      Arr[ind] + getAns(Arr, n, ind + 1, 0, cap - 1, dp));
