@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/number-of-islands/
-
+// 2D matrix. Each "1" represents a land cell, and each "0" represents a water cell. 
 #include <vector>
 #include <queue>
 #include <iostream>
@@ -36,7 +36,7 @@ public:
         // We make each 1 as 2 in when it is visited
         for(int i = 0; i < grid.size(); i++) {
             for(int j = 0; j < grid[0].size(); j++) {
-                // do DFS in case has not been visited and there is land
+                // do DFS in case ('1' -> unvisited) and there is land
                 if(grid[i][j] == '1') {
                     DFS(grid, i, j);
                     ++islands;
