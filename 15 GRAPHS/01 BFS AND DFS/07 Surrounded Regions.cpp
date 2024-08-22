@@ -16,7 +16,7 @@ public:
         
         // Enqueue 'O's on the border
         for (int i = 0; i < m; ++i) {
-            if (board[i][0] == 'O') bfsQueue.push({i, 0});
+            if (board[i][0] == 'O')     bfsQueue.push({i, 0});
             if (board[i][n - 1] == 'O') bfsQueue.push({i, n - 1});
         }
 
@@ -99,3 +99,18 @@ public:
 };
 
 
+//* APPROACH - 2
+/*
+we can create a new matrix named ans
+
+and we will initialize everything with 'X'
+visited means: board cell is O and ans cell is O
+unvisited means: board cell is O and ans cell is X
+and we don't care when board cell is X
+
+and so just by using 2 matrices
+
+ans matrix (returning as answrer)
+and board
+we can keep track of visited 
+ */

@@ -7,7 +7,6 @@ using namespace std;
 
 // USING DFS - no visited matrix
 class Solution {
-public:
     void DFS(vector<vector<char>>& grid, int i, int j) {
         // boundary checking
         if(i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size())
@@ -20,12 +19,15 @@ public:
         // mark the current as visited
         grid[i][j] = '2';
         
+        //2. visit all nbr
         // do DFS in all 4 directions - tldr
         DFS(grid, i+1, j);
         DFS(grid, i, j-1);
         DFS(grid, i-1, j);
         DFS(grid, i, j+1);
-    }
+    }    
+
+public:
     
     int numIslands(vector<vector<char>>& grid) {
         // We can treat the matrix grid as a grid. Each Island is a
@@ -63,7 +65,7 @@ public:
         // Mark the current cell as visited
         grid[i][j] = '2';
 
-        // Define directions for exploration:   up,   down,    left,    right
+        // Define directions for exploration:   top,   down,    left,    right
         vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
         while (!q.empty()) {
@@ -71,8 +73,8 @@ public:
             q.pop();
 
             // Explore all four directions
-            for (auto dir : directions) {
-                int x = curr.first + dir.first;
+            for (auto dir : directions) { 
+                int x = curr.first  + dir.first;
                 int y = curr.second + dir.second;
 
                 // Boundary and validity checks

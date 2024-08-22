@@ -52,14 +52,15 @@ int orangesRotting(vector<vector<int>>& grid) {
             for(int j = 0; j < n; ++j){
                 if(grid[i][j] != 0) tot++; // total oranges to be rottened
                 if(grid[i][j] == 2) {      // rottened oranges
-                    rotten.push({{i, j}, 0}); // {i,}
+                    rotten.push({{i, j}, 0}); // {{i, j}, day}
                     cnt++;
                 } 
             }
         }
         
-        int dx[4] = {0, 0, 1, -1};
-        int dy[4] = {1, -1, 0, 0};
+        // dx and dy to do - tldr
+        int dx[4] = {0,  0, 1, -1};
+        int dy[4] = {1, -1, 0,  0};
 
         while(rotten.size()){
 

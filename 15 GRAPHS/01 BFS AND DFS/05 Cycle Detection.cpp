@@ -21,7 +21,7 @@ class Solution {
       q.push({src, -1}); 
       // traverse until queue is not empty
       while(!q.empty()) {
-          int node = q.front().first; 
+          int node   = q.front().first; 
           int parent = q.front().second; 
           q.pop(); 
           

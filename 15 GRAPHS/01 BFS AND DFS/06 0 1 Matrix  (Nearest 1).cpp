@@ -68,3 +68,56 @@ public:
     FOR THIS QUESTION 
     (CHATGPT AND LEETCODE SOLUTIONS)
 */
+
+
+
+//* APPROACH - 2
+/*the 1st visit would always give the shortest distance
+so i initialized distances matrix with 0
+and if the "matrix" new cell is 1 && "distance" new cell 0
+then i will say that cell is unvisited
+and will do my 1st visit */
+class Solution {
+private:
+    bool isValidCoordinate(vector<vector<int>>& matrix, int x, int y) {
+        return (x >= 0 && x < matrix.size() && y >= 0 && y < matrix[0].size());
+    }
+
+public:
+    vector<vector<int>> updateMatrix(vector<vector<int>>& matrix) {
+        vector<vector<int>> distances(matrix.size(), vector<int>(matrix[0].size(), 0));
+        queue<pair<int,int>> q;
+
+        vector<pair<int,int>> directions{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+
+        // Initializing the queue with all 0-value cells
+        for (int i = 0; i < matrix.size(); ++i) {
+            for (int j = 0; j < matrix[0].size(); ++j) {
+                if (matrix[i][j] == 0) {
+                    q.push({i, j});
+                }
+            }
+        }
+
+        while (!q.empty()) {
+            int x = q.front().first;
+            int y = q.front().second;
+            q.pop();
+
+            for (auto dir : directions) {
+                int newX = x + dir.first;
+                int newY = y + dir.second;
+
+                if (isValidCoordinate(matrix, newX, newY)) {
+                    // condition make sure the cell containing 1 gets visited only 1 time (1st time)
+                    if (matrix[newX][newY] == 1 && distances[newX][newY] == 0) { 
+                        distances[newX][newY] = distances[x][y] + 1;
+                        q.push({newX, newY});
+                    }
+                }
+            }
+        }
+
+        return distances;
+    }
+};
