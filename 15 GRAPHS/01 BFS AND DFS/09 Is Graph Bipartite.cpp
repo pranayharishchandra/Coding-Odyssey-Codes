@@ -1,10 +1,25 @@
 // https://leetcode.com/problems/is-graph-bipartite/description/
 
+/*
+Bipertitie graph: alternate nodes should have different colors
+and we should be able to color the graph with only 2 color
+ */
 #include <vector>
 #include <set>
 #include <queue>
 #include <iostream>
 using namespace std;
+
+/*
+* APPROACH 2 (code not written) 
+color
+    0: unvisited
+    1: color1
+    2: color2
+
+vector<int> color (graph.size(), 0)
+color[node] = color[parent] == 2 ? 1 : 2
+*/
 
 /* USING BFS 
 Approach
@@ -68,13 +83,14 @@ private:
         
         for (int neighbor : graph[node]) {
             if (color[neighbor] == 0) {
-                if (!dfs(neighbor, -c, graph, color)) return false;
-            } else if (color[neighbor] == color[node]) {
+                if (!dfs(neighbor, -c, graph, color)) return false; // return the result
+            } 
+            else if (color[neighbor] == color[node]) { // if not same, don't need to further calls
                 return false;
             }
         }
         
-        return true;
+        return true; // keep checking
     }
     
 public:

@@ -1,6 +1,6 @@
 // https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1
 
-// if you want to know what's "DISTINCT" MEANS ( WITHtime stamp) - https://youtu.be/7zmgQSJghpo?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&t=104
+//* if you want to know what's "DISTINCT" MEANS ( WITHtime stamp) [1:44 to 10:58] - https://youtu.be/7zmgQSJghpo?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&t=104
 
 #include <vector>
 #include <set>
@@ -8,7 +8,14 @@
 #include <iostream>
 using namespace std;
 
-
+/*
+* Intution:
+- store in the : set<vector<pair<int, int>>> comps;
+- what what you need to make sure is 
+  -> cells should be relative to eachother (position) -> { refRow, refCol }
+  -> comp.push_back({row - refRow, col - refCol});
+  -> better watch the video till from 1:44 to 10:58
+ */
 
 /* MY FOLLOWING 1 YEAR OLD SOLUTION HAD ISSUES LIKE 
 To improve the given solution, we can make a few optimizations:

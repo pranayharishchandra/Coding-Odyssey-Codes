@@ -104,6 +104,6 @@ public:
             }
         }
 
-        return visited != V; // If not all nodes are visited, there is a cycle
+        return visited != V; //* If not all nodes are visited, there is a cycle
     }
 };
