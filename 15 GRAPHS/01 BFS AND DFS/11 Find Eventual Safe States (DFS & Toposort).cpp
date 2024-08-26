@@ -1,5 +1,21 @@
 // https://leetcode.com/problems/find-eventual-safe-states/description/
 
+/*
+* Intution
+(1) since a terminal node or a node with path going to terminal node (avoiding cycle)
+
+* (2) in exmaple 1 (leetcode): 
+0 and 1 are involved in a loop, and their indegree arn't 0
+and they come before 2, 3 and 5
+so since 0 and 1 can't have indegree 0, hence 2, 3, 5 also can't have indegree 0
+since the bond (from 0 or 1) to them was never broken
+
+- so that's whey you need to reverse the graph directions, 
+so parents invoved in the cycle don't hamper the child nodes from getting added into answer (reaching the teminal node)
+
+* - travel from the terminal node and come back to the other (prev/parent) nodes
+* hence the direction needs to be changed, as from terminal (end node) we are coming back
+*/
 #include <vector>
 #include <set>
 #include <queue>
