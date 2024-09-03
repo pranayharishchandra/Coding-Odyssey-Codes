@@ -1,7 +1,8 @@
 // https://leetcode.com/problems/is-graph-bipartite/description/
 
 /*
-Bipertitie graph: alternate nodes should have different colors
+* Bipertitie graph: 
+alternate nodes should have different colors
 and we should be able to color the graph with only 2 color
  */
 #include <vector>
@@ -22,7 +23,7 @@ color[node] = color[parent] == 2 ? 1 : 2
 */
 
 /* USING BFS 
-Approach
+* Approach
 Since we need to color the node with some color lets say (-1), 
 its neighbouring node cannot have color (-1) so we color them with (1) and so on.
 If we encounter any node that we already colored and its same as its neighbour
@@ -62,7 +63,7 @@ public:
     bool isBipartite(vector<vector<int>>& graph) {
         int n = graph.size();
         vector<int> color(n, -1); // Initial color of all nodes
-        vector<int> vis(n, 0); // Visited array
+        vector<int> vis(n, 0);    // Visited array
 
         for (int i = 0; i < n; ++i) {
             if (!vis[i] && !bfs(i, graph, color, vis)) {

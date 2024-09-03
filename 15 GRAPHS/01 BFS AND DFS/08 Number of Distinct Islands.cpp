@@ -89,7 +89,7 @@ public:
         int dcol[] = {0, 1, 0, -1};
 
         vector<vector<int>> vis(n, vector<int>(m, -1));
-        
+
         int totalComp = 0; 
 
         for (int i = 0; i < n; i++)

@@ -36,7 +36,7 @@ private:
 			// when the node is not visited
 			if (!vis[it] && dfsCheck(it, adj, vis, pathVis) == true) 
 					return true;
-			
+
 			// if the node has been previously visited
 			// but it has to be visited on the same path
 			else if (pathVis[it]) 
@@ -97,7 +97,7 @@ public:
 
             // Traverse neighbors of the current node
             for (int neighbor : adj[node]) {
-                --inDegree[neighbor];
+                --inDegree[neighbor]; // parent node (had inDegree == 0), was loosing the edge, so we are "--inDegree[nbr]"
                 if (inDegree[neighbor] == 0) {
                     q.push(neighbor);
                 }

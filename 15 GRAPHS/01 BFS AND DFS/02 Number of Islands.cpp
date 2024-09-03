@@ -79,9 +79,11 @@ public:
 
                 // Boundary and validity checks
                 if (x >= 0 && x < grid.size() && y >= 0 &&
-                    y < grid[0].size() && grid[x][y] == '1') {
+                        y < grid[0].size() && grid[x][y] == '1') {
+
                     grid[x][y] = '2';
                     q.push({x, y});
+
                 }
             }
         }

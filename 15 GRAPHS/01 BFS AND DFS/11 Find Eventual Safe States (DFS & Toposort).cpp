@@ -2,6 +2,12 @@
 
 /*
 * Intution
+- Toposort me Terminal node bichare ki koi aukat nhi thi... and parent ki thi (ager vo loop se connected tha to uska child kabhi free nhi ho pata tha i.e. inDegree[bacha] == 0)
+- but iss question me ulta ho gya Terminal node (bacha) ki aukat h and parent ho uska cycle me farak nhi pdta
+* keywords to toposort: ["cycle", "parent node", "teminal node", "order of nodes (one node before another - kparent before bacha)"]
+iss ye idea mil gya toposort hi lgana h, but kaise lgaya jayega 
+bs itna sochna tha, to soch liya, edge reverse krdo bs
+
 (1) since a terminal node or a node with path going to terminal node (avoiding cycle)
 
 * (2) in exmaple 1 (leetcode): 
@@ -81,9 +87,11 @@ public:
 
 
 
-/* using BFS | Kahn's Algo | using TOPOSORT 
+/* 
+* using BFS | Kahn's Algo | using TOPOSORT 
 
-        APPROACH
+
+*        APPROACH
 the node with outdegree 0 is the terminal node and the nodes 
 part of the cycle i.e. with indegree not 0 OR outdegree not 0
 are not safe nodes

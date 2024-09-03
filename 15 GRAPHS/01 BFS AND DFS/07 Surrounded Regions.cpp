@@ -5,6 +5,14 @@
 #include <iostream>
 using namespace std;
 
+/*
+*        *** INTUTION: ***
+* "Y" are immune to infection
+* since we are changing the same matrix, we don't need "visited" matrix
+* "O" in the boundary or connected to the boundry "O" will only become immune i.e. "Y"
+
+ */
+
 /* using BFS */
 class Solution {
 public:
@@ -21,7 +29,7 @@ public:
         }
 
         for (int j = 0; j < n; ++j) {
-            if (board[0][j] == 'O') bfsQueue.push({0, j});
+            if (board[0][j] == 'O')     bfsQueue.push({0, j});
             if (board[m - 1][j] == 'O') bfsQueue.push({m - 1, j});
         }
 
@@ -78,11 +86,13 @@ public:
         int m = board.size(), n = board[0].size();
         
         // Check borders for 'O's and perform DFS
+        // 1st and last row
         for (int i = 0; i < m; ++i) {
             if (board[i][0] == 'O') dfs(board, i, 0);
             if (board[i][n - 1] == 'O') dfs(board, i, n - 1);
         }
         
+        // 1st and last column
         for (int j = 0; j < n; ++j) {
             if (board[0][j] == 'O') dfs(board, 0, j);
             if (board[m - 1][j] == 'O') dfs(board, m - 1, j);
